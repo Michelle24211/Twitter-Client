@@ -7,25 +7,26 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Parcel
 public class Tweet {
-    public User user;
+    //public User user;
     public String description;
     public String time;
     public String background;
     public String type;
     public long id;
-
+    public Tweet(){};
 
     public static Tweet fromJson(JSONObject json) throws JSONException {
         Tweet tweet = new Tweet();
         tweet.description = json.getString("text");
         tweet.time = TimeFormatter.getTimeDifference(json.getString("created_at"));
         JSONObject u = json.getJSONObject("user");
-        tweet.user = new User(u.getString("name"), u.getString("profile_image_url_https"), u.getString("screen_name"));
+        //tweet.user = new User(u.getString("name"), u.getString("profile_image_url_https"), u.getString("screen_name"));
         if(json.has("entities") && json.getJSONObject("entities").has("media")){
             JSONArray back = json.getJSONObject("entities").getJSONArray("media");
 
