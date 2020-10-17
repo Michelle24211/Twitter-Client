@@ -7,10 +7,11 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Parcel
 public class Tweet {
     public User user;
     public String description;
@@ -18,7 +19,7 @@ public class Tweet {
     public String background;
     public String type;
     public long id;
-
+    public Tweet(){}
 
     public static Tweet fromJson(JSONObject json) throws JSONException {
         Tweet tweet = new Tweet();
